@@ -771,7 +771,7 @@ module InvoicePrinter
         align: :left
       )
       @pdf.text_box(
-        "Printed at #{Time.now.strftime('%a, %d %b %Y %l:%M %p %Z')}",
+        "Printed at #{Time.zone.now.strftime('%a, %d %b %Y %l:%M %p %Z')}",
         size: 10,
         at: [0, 10],
         width: 450,
