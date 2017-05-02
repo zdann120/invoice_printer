@@ -770,6 +770,13 @@ module InvoicePrinter
         width: 450,
         align: :left
       )
+      @pdf.text_box(
+        "Printed at #{Time.now}",
+        size: 10,
+        at: [0, 10],
+        width: 450,
+        align: :right
+      )
     end
 
     # Include page numbers if we got more than one page

@@ -81,7 +81,9 @@ module InvoicePrinter
                 :account_swift,
                 # Collection of InvoicePrinter::Invoice::Items
                 :items,
-                :note
+                :note,
+                # Customer attributes
+                :print_date
 
     def initialize(number: nil,
                    provider_name: nil,
@@ -145,6 +147,7 @@ module InvoicePrinter
       @account_swift = String(account_swift)
       @items = items
       @note = String(note)
+      @print_date = String(print_date)
 
       raise InvalidInput, 'items are not only a type of InvoicePrinter::Document::Item' \
         unless @items.select{ |i| !i.is_a?(InvoicePrinter::Document::Item) }.empty?
@@ -182,7 +185,8 @@ module InvoicePrinter
         'account_iban': @account_iban,
         'account_swift': @account_swift,
         'items': @items.map(&:to_h),
-        'note': @note
+        'note': @note,
+        'print_date': @print_date
       }
     end
 
